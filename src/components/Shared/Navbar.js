@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
         
-        <a class="btn btn-ghost normal-case text-xl">EntropyLab</a>
+        <a class="btn btn-ghost normal-case text-xl text-primary">EntropyLab</a>
       </div>
       
       <div class="navbar-end">
@@ -28,24 +29,24 @@ const Navbar = () => {
           </label>
           <ul
             tabindex="0"
-            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            class="menu menu-compact dropdown-content mt-3 p-2 text-primary shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to='/blogs'>Blogs</Link>
             </li>
           </ul>
         </div>
       <div class="hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
+        <ul class="menu text-primary menu-horizontal p-0">
           <li>
-            <a>Item 1</a>
+            <Link to='/'>Home</Link>
           </li>
          
           <li>
-            <a>Item 3</a>
+            <Link to='/blogs'>Blogs</Link>
           </li>
         </ul>
       </div>
