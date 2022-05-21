@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import labjar from '../../assets/icons8-round-bottom-flask-48.png'
 const Navbar = () => {
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
         
-        <a class="btn btn-ghost normal-case text-xl text-primary">EntropyLab</a>
+        <Link to='/' class="btn btn-ghost normal-case text-xl text-primary">
+            <img src={labjar} alt="labjar" />
+            EntropyLab</Link>
       </div>
       
       <div class="navbar-end">
