@@ -7,6 +7,7 @@ import Login from "./components/pages/Authentication/Login/Login";
 import Signup from "./components/pages/Authentication/Signup/Signup";
 import RequireAuth from "./components/pages/Authentication/RequireAuth/RequireAuth";
 import About from "./components/pages/About/About";
+import NotFound from "./components/Shared/NotFound";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         <Route path="/about" element={<RequireAuth>
           <About></About>
         </RequireAuth>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+     
       <Footer></Footer>
     </>
   );

@@ -1,7 +1,27 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import labjar from '../../assets/icons8-round-bottom-flask-48.png'
+import auth from "../../firebase.init";
+import Loading from "./Loading";
+
 const Navbar = () => {
+  const logout = () => {
+    signOut(auth);
+  };
+
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error}</p>
+      </div>
+    );
+  }
   return (
     <div class="navbar bg-base-100">
       <div class="navbar-start">
@@ -39,8 +59,24 @@ const Navbar = () => {
             <li>
               <Link to='/blogs'>Blogs</Link>
             </li>
+            <li>
+              <Link to='/about'>About</Link>
+            </li>
+            {
+              !user && <>
+              <li>
+              <Link to='/login'>Login</Link>
+            </li>
+            <li>
+              <Link to='/signup'>Signup</Link>
+            </li>
+              </>
+            }
+            
           </ul>
         </div>
+
+
       <div class="hidden lg:flex">
         <ul class="menu text-primary menu-horizontal p-0">
           <li>
@@ -50,6 +86,25 @@ const Navbar = () => {
           <li>
             <Link to='/blogs'>Blogs</Link>
           </li>
+          <li>
+            <Link to='/about'>About</Link>
+          </li>
+          {
+            user &&   <button class="btn btn-ghost normal-case  text-primary" onClick={logout}>Log out</button>
+          }
+        
+         {
+           !user && <>
+            <li>
+            <Link to='/login'>Login</Link>
+          </li>
+          <li>
+            <Link to='/signup'>Signup</Link>
+          </li>
+           </>
+         }
+         
+        
         </ul>
       </div>
       </div>
