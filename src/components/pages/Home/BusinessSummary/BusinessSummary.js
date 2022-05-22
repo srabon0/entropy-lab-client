@@ -9,10 +9,7 @@ const BusinessSummary = () => {
          EntropyLab Business Summary This year
           </h1>
           <p class="lg:w-2/3 mx-auto leading-relaxed text-">
-            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-            gentrify, subway tile poke farm-to-table. Franzen you probably
-            haven't heard of them man bun deep jianbing selfies heirloom prism
-            food truck ugh squid celiac humblebrag.
+            We have developed a tremendous number of chemical lab , biological lab, industrial lab.
           </p>
         </div>
         <div class=" flex flex-wrap md:flex md:flex-nowrap  -m-4 text-center stats shadow">

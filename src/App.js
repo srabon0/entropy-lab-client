@@ -10,6 +10,8 @@ import About from "./components/pages/About/About";
 import NotFound from "./components/Shared/NotFound";
 import Profile from "./components/pages/Profile/Profile";
 import EditProfile from "./components/pages/Profile/EditProfile";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Additem from "./components/Dashboard/Additem";
 
 function App() {
   return (
@@ -21,18 +23,44 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/about" element={<RequireAuth>
-          <About></About>
-        </RequireAuth>} />
-        <Route path="/editprofile" element={<RequireAuth>
-          <EditProfile></EditProfile>
-        </RequireAuth>} />
-        <Route path="/profile" element={<RequireAuth>
-          <Profile></Profile>
-        </RequireAuth>} />
+        <Route
+          path="/about"
+          element={
+            <RequireAuth>
+              <About></About>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/editprofile"
+          element={
+            <RequireAuth>
+              <EditProfile></EditProfile>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile></Profile>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
+          <Route index element={<Additem />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
-     
+
       <Footer></Footer>
     </>
   );

@@ -2,11 +2,11 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="">
-      <button type="button" class="bg-primary ..." disabled>
-        <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-        Loading...
-      </button>
+    <div className="container flex h-screen justify-center items-center">
+      <div
+        class="w-12 h-12 rounded-full animate-spin
+                    border-2 border-solid border-blue-500 border-t-transparent"
+      ></div>
     </div>
   );
 };
