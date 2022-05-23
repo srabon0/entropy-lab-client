@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Additem from "./components/Dashboard/Additem";
+import SingleItem from "./components/SingleItem/SingleItem";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/item/:id" element={<SingleItem />} />
         <Route
           path="/about"
           element={
