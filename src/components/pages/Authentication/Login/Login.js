@@ -120,7 +120,7 @@ const Login = () => {
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600"
-                htmlFor="LoggingEmailAddress"
+                htmlhtmlFor="LoggingEmailAddress"
               >
                 Email Address
               </label>
@@ -154,7 +154,7 @@ const Login = () => {
               <div className="flex justify-between">
                 <label
                   className="block mb-2 text-sm font-medium text-gray-600"
-                  htmlFor="loggingPassword"
+                  htmlhtmlFor="loggingPassword"
                 >
                   Password
                 </label>

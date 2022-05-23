@@ -109,7 +109,7 @@ const Signup = () => {
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 "
-                htmlFor="LoggingEmailAddress"
+                htmlhtmlFor="LoggingEmailAddress"
               >
                 Name
               </label>
@@ -136,7 +136,7 @@ const Signup = () => {
             <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 "
-                htmlFor="LoggingEmailAddress"
+                htmlhtmlFor="LoggingEmailAddress"
               >
                 Email Address
               </label>
@@ -168,7 +168,7 @@ const Signup = () => {
               <div className="flex justify-between">
                 <label
                   className="block mb-2 text-sm font-medium text-gray-600 "
-                  htmlFor="loggingPassword"
+                  htmlhtmlFor="loggingPassword"
                 >
                   Password
                 </label>

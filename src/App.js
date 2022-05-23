@@ -11,6 +11,8 @@ import NotFound from "./components/Shared/NotFound";
 import Profile from "./components/pages/Profile/Profile";
 import EditProfile from "./components/pages/Profile/EditProfile";
 import Dashboard from "./components/Dashboard/Dashboard";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import Additem from "./components/Dashboard/Additem";
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
       </Routes>
 
       <Footer></Footer>
+      <ToastContainer />
     </>
   );
 }
