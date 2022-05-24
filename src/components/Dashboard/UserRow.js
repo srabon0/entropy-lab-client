@@ -28,6 +28,27 @@ const UserRow = ({user,refetch}) => {
         }
       };
 
+      const handleMakeAdmin = async(email)=>{
+        const headers = {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          };
+        const url = `http://localhost:5000/makeadmin/${email}`;
+        const proceed = await Confirm('Confirm Again !!!', 
+        'Confirmation');
+        if (proceed) {
+          const {data} = await axios.put(url,{headers:headers});
+          if(data){
+              console.log(data)
+              toast.success("This user added as an admin");
+              refetch();
+          }else{
+              toast.error("Sorry! Operation Failed")
+          }
+          
+        }
+
+      }
 
     
   return (
@@ -64,7 +85,7 @@ const UserRow = ({user,refetch}) => {
           </span> </Link>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <button>
+          <button onClick={()=>handleMakeAdmin(email)}>
           <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
             <span
               aria-hidden
