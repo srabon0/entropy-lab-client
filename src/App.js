@@ -17,6 +17,8 @@ import SingleItem from "./components/SingleItem/SingleItem";
 import Myprofile from "./components/Dashboard/Myprofile";
 import Addreview from "./components/Dashboard/Addreview";
 import Myorders from "./components/Dashboard/Myorders";
+import Alluser from "./components/Dashboard/Alluser";
+import ManageOrder from "./components/Dashboard/ManageOrder";
 
 function App() {
   return (
@@ -52,6 +54,8 @@ function App() {
           <Route path="/dashboard/myorders" element={<Myorders />} />
           <Route path="/dashboard/addreview" element={<Addreview />} />
           <Route path="/dashboard/additem" element={<Additem />} />
+          <Route path="/dashboard/alluser" element={<Alluser />} />
+          <Route path="/dashboard/manageorder" element={<ManageOrder />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
