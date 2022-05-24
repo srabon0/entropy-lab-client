@@ -6,7 +6,8 @@ import labjar from "../../assets/icons8-round-bottom-flask-48.png";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 import dummy from '../../assets/face-mask.png'
-import { useQuery } from "react-query";
+
+
 
 const Navbar = () => {
 
@@ -17,20 +18,14 @@ const Navbar = () => {
   };
 
   const [user, loading, error] = useAuthState(auth);
-
-  const url = ` http://localhost:5000/user/${user.email}`;
-  const { isLoading, error2, data:currentUser} = useQuery(['user',user], () =>
-     fetch(url).then(res =>
-       res.json()
-     )
-   )
-  if (loading || isLoading) {
+  
+  if (loading) {
     return <Loading></Loading>;
   }
-  if (error ||error2) {
+  if (error) {
     return (
       <div>
-        <p>Error: {error || error2 }</p>
+        <p>Error: {error }</p>
       </div>
     );
   }
@@ -82,7 +77,7 @@ const Navbar = () => {
             <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-10">
               <div class="w-10 rounded-full">
-                <img src={user.photoURL || currentUser?.img || dummy } />
+                <img src={user.photoURL || dummy } />
               </div>
             </label>
             <ul
