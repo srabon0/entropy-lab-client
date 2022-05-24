@@ -8,8 +8,7 @@ import Signup from "./components/pages/Authentication/Signup/Signup";
 import RequireAuth from "./components/pages/Authentication/RequireAuth/RequireAuth";
 import About from "./components/pages/About/About";
 import NotFound from "./components/Shared/NotFound";
-import Profile from "./components/pages/Profile/Profile";
-import EditProfile from "./components/pages/Profile/EditProfile";
+
 import Dashboard from "./components/Dashboard/Dashboard";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -38,22 +37,8 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route
-          path="/editprofile"
-          element={
-            <RequireAuth>
-              <EditProfile></EditProfile>
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <RequireAuth>
-              <Profile></Profile>
-            </RequireAuth>
-          }
-        />
+       
+       
         <Route
           path="/dashboard"
           element={

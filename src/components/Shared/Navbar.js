@@ -6,21 +6,31 @@ import labjar from "../../assets/icons8-round-bottom-flask-48.png";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 import dummy from '../../assets/face-mask.png'
+import { useQuery } from "react-query";
 
 const Navbar = () => {
+
+  
   
   const logout = () => {
     signOut(auth);
   };
 
   const [user, loading, error] = useAuthState(auth);
-  if (loading) {
+
+  const url = ` http://localhost:5000/user/${user.email}`;
+  const { isLoading, error2, data:currentUser} = useQuery(['user',user], () =>
+     fetch(url).then(res =>
+       res.json()
+     )
+   )
+  if (loading || isLoading) {
     return <Loading></Loading>;
   }
-  if (error) {
+  if (error ||error2) {
     return (
       <div>
-        <p>Error: {error}</p>
+        <p>Error: {error || error2 }</p>
       </div>
     );
   }
@@ -72,7 +82,7 @@ const Navbar = () => {
             <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-10">
               <div class="w-10 rounded-full">
-                <img src={user.photoURL || dummy } />
+                <img src={user.photoURL || currentUser?.img || dummy } />
               </div>
             </label>
             <ul
@@ -80,7 +90,7 @@ const Navbar = () => {
               class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to='/profile' class="justify-between">
+                <Link to='/dashboard' class="justify-between">
                   Profile
                   <span class="badge">New</span>
                 </Link>

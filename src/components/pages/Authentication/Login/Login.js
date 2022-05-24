@@ -23,6 +23,7 @@ const Login = () => {
   const [token] = useToken(user || gUser);
 
   let signInError;
+  console.log(user || gUser)
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";

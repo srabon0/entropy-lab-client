@@ -43,7 +43,7 @@ const Dashboard = () => {
           </svg>
           Click to Expand
         </label>
-        <h1 className="text-blue-500 text-4xl font-medium">
+        <h1 className="m-2 text-blue-500 text-2xl font-medium">
           Welcome to dashboard
         </h1>
         {/* <!-- Page content here --> */}
