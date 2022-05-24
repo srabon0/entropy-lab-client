@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { toast } from "react-toastify";
 
 
 const Modal = ({item, user,setOrder}) => {
@@ -26,6 +27,7 @@ const Modal = ({item, user,setOrder}) => {
        const {data} = await axios.post(url,orderProduct,{headers:headers});
        if(data.insertedId){
         console.log(data)
+        toast.success("Order Confirmed")
         setOrder(null)
        }
 

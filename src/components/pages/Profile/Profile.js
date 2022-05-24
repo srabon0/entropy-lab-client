@@ -5,7 +5,7 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading';
 
 const Profile = () => {
-    const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth);
   if (loading) {
     return <Loading></Loading>;
   }
