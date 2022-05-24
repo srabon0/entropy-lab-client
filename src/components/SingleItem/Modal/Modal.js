@@ -1,11 +1,18 @@
 import axios from "axios";
 import React from "react";
+
 import { toast } from "react-toastify";
+import useCurrentUser from "../../Hooks/useCurrentUser";
 
 
 const Modal = ({item, user,setOrder}) => {
    const {_id,productName,availableQ,minimumQ, pricePerUnit} = item
    const {displayName, email} = user
+   const [internalUser] = useCurrentUser();
+   console.log(internalUser);
+   
+
+  
 
    const handleConfirmOrder = async (event) =>{
        event.preventDefault()
@@ -15,7 +22,7 @@ const Modal = ({item, user,setOrder}) => {
         productName:productName,
         pricePerUnit:pricePerUnit,
         customer:email,
-        customerName:displayName,
+        customerName: displayName ,
         orderQ: event.target.orderQ.value
        }
        const headers = {
@@ -64,14 +71,14 @@ const Modal = ({item, user,setOrder}) => {
                   />
                 </div>
                 <div class="flex flex-col">
-                  <label class="leading-loose">Customer Name</label>
+                  <label class="leading-loose">Buyer Name Name</label>
                   <input
-                   readOnly
-                   value={displayName}
-                   name="customerName"
-                    type="email"
+                   defaultValue={displayName || internalUser?.name}
+                 
+                   name="name"
+                    type="text"
                     class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                    placeholder="eg: 1000"
+                    placeholder="Buyer Name"
                   />
                 </div>
                 <div class="flex flex-col">
