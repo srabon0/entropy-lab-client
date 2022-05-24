@@ -6,6 +6,7 @@ import labjar from "../../assets/icons8-round-bottom-flask-48.png";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 import dummy from '../../assets/face-mask.png'
+import useCurrentUser from "../Hooks/useCurrentUser";
 
 
 
@@ -18,6 +19,7 @@ const Navbar = () => {
   };
 
   const [user, loading, error] = useAuthState(auth);
+  const [internalUser] = useCurrentUser();
   
   if (loading) {
     return <Loading></Loading>;
@@ -77,7 +79,7 @@ const Navbar = () => {
             <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar mx-10">
               <div class="w-10 rounded-full">
-                <img src={user.photoURL || dummy } />
+                <img src={user.photoURL || internalUser?.img } />
               </div>
             </label>
             <ul
