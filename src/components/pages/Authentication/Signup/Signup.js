@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import {  useSignInWithGoogle,useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import signImg from "../../../../assets/undraw_Science_re_mnnr.png";
 import useToken from "../../../Hooks/useToken";
+import Loading from "../../../Shared/Loading";
 
 const Signup = () => {
     const navigate= useNavigate()
@@ -32,7 +33,7 @@ const Signup = () => {
      signUpError = <p className="text-red-500">{error?.message||upError?.message ||gError.message }</p>
     }
     if (loading || gLoading || updating) {
-      return <p>Loading</p>
+      return <Loading></Loading>
     }
     if (token) {
       navigate('/');
