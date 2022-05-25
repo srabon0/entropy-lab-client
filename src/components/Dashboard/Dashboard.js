@@ -60,6 +60,9 @@ const Dashboard = () => {
               <li>
                 <Link to="/dashboard">My Profile</Link>
               </li>
+              <li>
+                <Link to="/dashboard/paymentmethod">Payment Method</Link>
+              </li>
             </>
           )}
 
@@ -79,17 +82,17 @@ const Dashboard = () => {
           {
             admin && <>
             <li>
-            <Link to="/dashboard/additem">Add Product</Link>
+            <Link to="/dashboard/additem">Add A Product</Link>
           </li>
             <li>
-            <Link to="/dashboard/manageitem">Manage Product</Link>
+            <Link to="/dashboard/manageitem">Manage Products</Link>
           </li>
           <li>
-            <Link to="/dashboard/manageorder">Manage Order</Link>
+            <Link to="/dashboard/manageorder">Manage All Orders</Link>
           </li>
           
           <li>
-            <Link to="/dashboard/alluser">Manage User</Link>
+            <Link to="/dashboard/alluser">Make Admin</Link>
           </li>
             </>
           }

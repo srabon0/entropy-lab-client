@@ -33,7 +33,7 @@ const ProductRow = ({product,index,refetch}) => {
           
           
               <p class="text-gray-900 whitespace-no-wrap">{productName}</p>
-              <p class="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK </p>
+              <p class="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK/per unit </p>
               
             
           
@@ -45,9 +45,7 @@ const ProductRow = ({product,index,refetch}) => {
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p class="text-gray-900 whitespace-no-wrap"> {minimumQ} Unit </p> 
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-           
-        </td>
+        
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
               onClick={() => cancelOrder(_id)}
@@ -55,6 +53,9 @@ const ProductRow = ({product,index,refetch}) => {
             >
               Delete
             </button>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+           
         </td>
 
         
