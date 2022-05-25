@@ -140,6 +140,15 @@ const OrderRow = ({ refetch, order, index }) => {
             <button className="btn btn-sm btn-secondary text-white mx-1">
               Product Shipped
             </button>
+          ) : 
+          
+          transactionId ? (
+            <button
+            
+              className="btn btn-sm btn-info mx-1"
+            >
+              Shipment Pending
+            </button>
           ) : (
             <button
               onClick={() => cancelOrder(_id)}
@@ -147,7 +156,9 @@ const OrderRow = ({ refetch, order, index }) => {
             >
               Cancel Order
             </button>
-          )}
+          )
+          
+          }
         </td>
       </tr>
     </>

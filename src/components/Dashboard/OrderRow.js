@@ -5,21 +5,21 @@ import { Confirm } from "react-st-modal";
 import { toast } from "react-toastify";
 
 const UserRow = ({ index, order,refetch}) => {
-    const {_id,productName, productId, pricePerUnit,transactionId,customer,orderQ} = order
+    const {_id,productName, productId, pricePerUnit,transactionId,customer,orderQ,shipped} = order
 
     const handleShipping = async(id) => {
         const headers = {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           };
-        const url = `http://localhost:5000/deluser/${id}`;
-        const proceed = await Confirm('Are you Sure you want to remove the user ?', 
+        const url = `http://localhost:5000/order/delivered/${id}`;
+        const proceed = await Confirm('Are you ready for shipment ?', 
         'Warning');
         if (proceed) {
-          const {data} = await axios.delete(url,{headers:headers});
+          const {data} = await axios.put(url,{headers:headers});
           if(data){
               console.log(data)
-              toast.success("User Removed");
+              toast.success("Deliverd");
               refetch();
           }else{
               toast.error("operation failed")
@@ -92,7 +92,20 @@ const UserRow = ({ index, order,refetch}) => {
            
           } 
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        {
+          shipped ? <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <button disabled = { transactionId ? false : true } onClick={() => handleShipping(_id)}>
+          <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
+            <span
+              aria-hidden
+              class={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
+            ></span>
+            <span class="relative">Delivered</span>
+          </span>
+          </button>
+        </td> :
+
+          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button disabled = { transactionId ? false : true } onClick={() => handleShipping(_id)}>
           <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
             <span
@@ -103,6 +116,7 @@ const UserRow = ({ index, order,refetch}) => {
           </span>
           </button>
         </td>
+        }
 
       </tr>
     </>
