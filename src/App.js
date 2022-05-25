@@ -20,6 +20,7 @@ import Myorders from "./components/Dashboard/Myorders";
 import Alluser from "./components/Dashboard/Alluser";
 import ManageOrder from "./components/Dashboard/ManageOrder";
 import RequireAdmin from "./components/pages/Authentication/RequireAuth/RequireAdmin";
+import ManageProduct from "./components/Dashboard/ManageProduct";
 
 function App() {
   return (
@@ -59,6 +60,9 @@ function App() {
           </RequireAdmin>} />
           <Route path="/dashboard/alluser" element={<RequireAdmin>
             <Alluser />
+          </RequireAdmin>} />
+          <Route path="/dashboard/manageitem" element={<RequireAdmin>
+            <ManageProduct />
           </RequireAdmin>} />
           <Route path="/dashboard/manageorder" element={<RequireAdmin>
             <ManageOrder />

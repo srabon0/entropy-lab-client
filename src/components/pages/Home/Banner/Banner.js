@@ -12,9 +12,7 @@ const Banner = () => {
         <div className="md:w-2/4">
           <h1 class="text-5xl font-bold text-primary">Welcome To EntropyLab</h1>
           <p class="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          EntropyLab Bangladesh is an A to Z Scientific Lab Equipment seller and supplier in Bangladesh. It’s also a scientific store, stockist, wholesaler, procurement provider, retailer of health, safety, surgical, scientific laboratory and testing Products for schools, colleges, and industries. EntropyLab provides the complete product solution of laboratory equipment, lab consumable materials, and safety products. Here we sell Weight Scales, 
           </p>
           <button class="btn btn-primary hover:btn-secondary">
             Get Started

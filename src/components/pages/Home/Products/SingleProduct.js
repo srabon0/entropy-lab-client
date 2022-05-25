@@ -28,7 +28,7 @@ const SingleProduct = ({product}) => {
                   {desc.slice(0,150) + "...see more"}
                 </p>
                 <div class="flex items-center flex-wrap ">
-                  <button onClick={()=>navigateToDetails(_id)} class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                  <button onClick={()=>navigateToDetails(_id)} class="text-primary inline-flex items-center md:mb-2 lg:mb-0">
                     Learn More
                     <svg
                       class="w-4 h-4 ml-2"
