@@ -5,7 +5,7 @@ import { Confirm } from "react-st-modal";
 import { toast } from "react-toastify";
 
 const UserRow = ({ index, order,refetch}) => {
-    const {_id,productName, productId, transactionId, pricePerUnit,customer,orderQ} = order
+    const {_id,productName, productId, pricePerUnit,transactionId,customer,orderQ} = order
 
     const handleShipping = async(id) => {
         const headers = {
@@ -73,17 +73,17 @@ const UserRow = ({ index, order,refetch}) => {
         
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           {
-            transactionId ? <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
+            transactionId ? <span class="relative inline-block px-3 py-1 font-semibold text-black leading-tight">
             <span
               aria-hidden
-              class="absolute inset-0 bg-accent opacity-50 rounded-sm"
+              class="absolute inset-0 bg-info rounded-sm"
             ></span>
             <span class="relative">Paid</span>
           </span>
           :<span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
           <span
             aria-hidden
-            class="absolute inset-0 bg-accent opacity-50 rounded-sm"
+            class="absolute inset-0 bg-error opacity-50 rounded-sm"
           ></span>
           <span class="relative">Unpaid</span>
         </span> 
@@ -93,11 +93,11 @@ const UserRow = ({ index, order,refetch}) => {
           } 
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <button disabled = { transactionId ? true : false } onClick={() => handleShipping(_id)}>
-          <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
+          <button disabled = { transactionId ? false : true } onClick={() => handleShipping(_id)}>
+          <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
             <span
               aria-hidden
-              class="absolute inset-0 bg-red-700 rounded-sm"
+              class={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
             ></span>
             <span class="relative">Ship</span>
           </span>
