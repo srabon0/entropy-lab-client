@@ -19,6 +19,7 @@ import Addreview from "./components/Dashboard/Addreview";
 import Myorders from "./components/Dashboard/Myorders";
 import Alluser from "./components/Dashboard/Alluser";
 import ManageOrder from "./components/Dashboard/ManageOrder";
+import RequireAdmin from "./components/pages/Authentication/RequireAuth/RequireAdmin";
 
 function App() {
   return (
@@ -53,9 +54,15 @@ function App() {
          
           <Route path="/dashboard/myorders" element={<Myorders />} />
           <Route path="/dashboard/addreview" element={<Addreview />} />
-          <Route path="/dashboard/additem" element={<Additem />} />
-          <Route path="/dashboard/alluser" element={<Alluser />} />
-          <Route path="/dashboard/manageorder" element={<ManageOrder />} />
+          <Route path="/dashboard/additem" element={<RequireAdmin>
+            <Additem />
+          </RequireAdmin>} />
+          <Route path="/dashboard/alluser" element={<RequireAdmin>
+            <Alluser />
+          </RequireAdmin>} />
+          <Route path="/dashboard/manageorder" element={<RequireAdmin>
+            <ManageOrder />
+          </RequireAdmin>} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
