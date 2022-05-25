@@ -29,26 +29,26 @@ const UserRow = ({user,refetch}) => {
       };
 
       const handleMakeAdmin = async(email)=>{
-        const headers = {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          };
-        const url = `http://localhost:5000/makeadmin/${email}`;
-        const proceed = await Confirm('Confirm Again !!!', 
+       
+      const proceed = await Confirm('Confirm Again !!!', 
         'Confirmation');
         if (proceed) {
-          const {data} = await axios.put(url,{headers:headers});
-          if(data){
-              console.log(data)
-              toast.success("This user added as an admin");
-              refetch();
-          }else{
-              toast.error("Sorry! Operation Failed")
-          }
+          const adminUrl = `http://localhost:5000/secretAdmin/${email}`;
+          fetch(adminUrl,{
+            method:"PUT",
+            headers:{
+              'content-type':'application/json',
+              'authorization': `Bearer ${localStorage.getItem("accessToken")}`
+            }
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data)
+          })
           
-        }
 
       }
+    }
 
     
   return (

@@ -82,8 +82,8 @@ const OrderRow = ({ refetch, order, index }) => {
     if (txnId.length > 10) {
       const transactionId = { transactionId: txnId };
       console.log(transactionId);
-      const { data } = axios.put(url, transactionId, { headers: headers });
-      if (data) {
+      const { data } = await axios.put(url, transactionId, { headers: headers });
+      if (data.modifiedCount) {
         console.log(data);
         toast.success("Payment SuccessFul");
         refetch();
