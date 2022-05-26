@@ -30,7 +30,7 @@ const Modal = ({item, user,setOrder}) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       };
        
-       const url  = "https://powerful-mesa-47934.herokuapp.com/order"
+       const url  = "https://powerful-mesa-47934.herokuapp.com/ order"
        const {data} = await axios.post(url,orderProduct,{headers:headers});
        if(data.insertedId){
         console.log(data)

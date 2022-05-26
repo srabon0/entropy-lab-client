@@ -34,7 +34,7 @@ const Additem = () => {
             pricePerUnit: ppu,
             desc:desc
           }
-          const addItemUrl = "https://powerful-mesa-47934.herokuapp.com/additem";
+          const addItemUrl = "https://powerful-mesa-47934.herokuapp.com/ additem";
           fetch(addItemUrl, {
             method: "POST",
             headers: {

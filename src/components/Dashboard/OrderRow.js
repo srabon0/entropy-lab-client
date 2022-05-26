@@ -12,7 +12,7 @@ const UserRow = ({ index, order,refetch}) => {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           };
-        const url = `https://powerful-mesa-47934.herokuapp.com/order/delivered/${id}`;
+        const url = `https://powerful-mesa-47934.herokuapp.com/ order/delivered/${id}`;
         const proceed = await Confirm('Are you ready for shipment ?', 
         'Warning');
         if (proceed) {

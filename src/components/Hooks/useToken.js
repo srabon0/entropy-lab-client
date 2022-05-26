@@ -10,7 +10,7 @@ const useToken = user=>{
     };
     useEffect(()=>{
         if(email){
-            axios.put(`https://powerful-mesa-47934.herokuapp.com/user/${email}`, currentUser, { headers})
+            axios.put(`https://powerful-mesa-47934.herokuapp.com/ user/${email}`, currentUser, { headers})
             .then(response=>{
                 console.log(response.data);
                 const token = response.data.token;

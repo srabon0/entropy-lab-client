@@ -9,7 +9,7 @@ const ManageProduct = () => {
         data: products,
         refetch
       } = useQuery("products", () =>
-        fetch("https://powerful-mesa-47934.herokuapp.com/labitems").then((res) => res.json())
+        fetch("https://powerful-mesa-47934.herokuapp.com/ labitems").then((res) => res.json())
       );
     
       if (isLoading) return <Loading></Loading>

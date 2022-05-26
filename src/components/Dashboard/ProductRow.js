@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const ProductRow = ({product,index,refetch}) => {
 
     const cancelOrder = async (id) => {
-        const url = `https://powerful-mesa-47934.herokuapp.com/removeitem/${id}`;
+        const url = `https://powerful-mesa-47934.herokuapp.com/ removeitem/${id}`;
         const headers = {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         };

@@ -29,7 +29,7 @@ const SingleItem = () => {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       };
-      const url = `https://powerful-mesa-47934.herokuapp.com/item/${id}`;
+      const url = `https://powerful-mesa-47934.herokuapp.com/ item/${id}`;
       const { data } = await axios.get(url, { headers: headers });
       console.log(data);
       setItem(data);

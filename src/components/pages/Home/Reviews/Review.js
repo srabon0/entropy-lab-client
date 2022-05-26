@@ -18,7 +18,7 @@ import { Pagination, Navigation } from "swiper";
 
 const Review = () => {
     const { isLoading, error, data:reviews } = useQuery('repoData', () =>
-     fetch('https://powerful-mesa-47934.herokuapp.com/reviews').then(res =>
+     fetch('https://powerful-mesa-47934.herokuapp.com/ reviews').then(res =>
        res.json()
      )
    )

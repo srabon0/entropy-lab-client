@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useQuery } from "react-query";
 const Myorders = () => {
   const [user, loading, error] = useAuthState(auth);
-  const url = ` https://powerful-mesa-47934.herokuapp.com/order/${user.email}`;
+  const url = ` https://powerful-mesa-47934.herokuapp.com/ order/${user.email}`;
   const {
     isLoading,
     error2,
@@ -67,7 +67,7 @@ const OrderRow = ({ refetch, order, index }) => {
     order;
 
   const payForOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/order/pay/${id}`;
+    const url = `https://powerful-mesa-47934.herokuapp.com/ order/pay/${id}`;
     const headers = {
       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
@@ -94,7 +94,7 @@ const OrderRow = ({ refetch, order, index }) => {
   };
 
   const cancelOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/item/${id}`;
+    const url = `https://powerful-mesa-47934.herokuapp.com/ item/${id}`;
     const headers = {
       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
@@ -104,7 +104,7 @@ const OrderRow = ({ refetch, order, index }) => {
     );
 
     if (result) {
-      const { data } = axios.delete(url, { headers: headers });
+      const { data } =await axios.delete(url, { headers: headers });
       console.log(data);
       toast.success("Order cancelled");
       refetch();
