@@ -118,10 +118,10 @@ const img = "https://i.ibb.co/sH1pt2h/labvideo-1.gif"
           </span>
           <a className="flex flex-col items-center justify-end p-6 text-center sm:p-8 group via-transparent flex-grow-1 bg-gradient-to-b from-gray-900 to-gray-900">
             <span className="flex items-center mb-4 space-x-2 text-primary">
-              <span className="relative flex-shrink-0 w-2 h-2 rounded-full bg-primary">
-                <span className="absolute flex-shrink-0 w-3 h-3 rounded-full -left-1 -top-1 animate-ping bg-primary"></span>
+              <span className="relative flex-shrink-0 w-2 h-2 rounded-full bg-red-600">
+                <span className="absolute flex-shrink-0 w-3 h-3 rounded-full -left-1 -top-1 animate-ping bg-red-600"></span>
               </span>
-              <span className="text-sm font-bold">Live</span>
+              <span className="text-sm font-bold text-red-600">Live</span>
             </span>
             <h1
               rel="noopener noreferrer"
