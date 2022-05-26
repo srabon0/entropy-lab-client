@@ -30,7 +30,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate(from, { replace: true });
+      navigate('/dashboard');
     }
   }, [token, from, navigate]);
 
