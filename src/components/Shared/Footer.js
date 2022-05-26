@@ -3,9 +3,13 @@ import labjar from "../../assets/icons8-round-bottom-flask-48.png"
 const Footer = () => {
   return (
     <footer class="footer p-10 bg-primary text-base-content">
-    <div className="text-white">
+    <div className="text-white flex">
         <img className="w-10" src={labjar} alt="" />
-    <p>EntropyLab Industries Ltd.<br/>Providing reliable tech since 1992</p>
+    <p className="text-2xl">EntropyLab Industries Ltd.
+    <br />
+    <span className="text-sm">Providing reliable tech since 1992</span>
+    </p>
+    
   </div>
       <div className="text-white">
         <span class="footer-title">Services</span>
