@@ -12,27 +12,27 @@ const Footer = () => {
     
   </div>
       <div className="text-white">
-        <span class="footer-title">Services</span>
+        <span class="font-lg text-white">Services</span>
         <a class="link link-hover">Branding</a>
         <a class="link link-hover">Design</a>
         <a class="link link-hover">Marketing</a>
         <a class="link link-hover">Advertisement</a>
       </div>
       <div className="text-white">
-        <span class="footer-title">Company</span>
+        <span class="font-lg text-white">Company</span>
         <a class="link link-hover">About us</a>
         <a class="link link-hover">Contact</a>
         <a class="link link-hover">Jobs</a>
         <a class="link link-hover">Press kit</a>
       </div>
       <div className="text-white">
-        <span class="footer-title">Legal</span>
+        <span class="font-lg text-white">Legal</span>
         <a class="link link-hover">Terms of use</a>
         <a class="link link-hover">Privacy policy</a>
         <a class="link link-hover">Cookie policy</a>
       </div>
       <div className="text-white">
-        <span class="footer-title">Newsletter</span>
+        <span class="font-lg text-white">Newsletter</span>
         <div class="form-control text-white w-80">
           <label class="label">
             <span class="label-text text-white">Enter your email address</span>
@@ -43,7 +43,7 @@ const Footer = () => {
               placeholder="username@site.com"
               class="input input-bordered w-full pr-16"
             />
-            <button class="btn btn-accent absolute top-0 right-0 rounded-l-none">
+            <button class="btn btn-primary btn-outline absolute top-0 right-0 rounded-l-none">
               Subscribe
             </button>
           </div>
