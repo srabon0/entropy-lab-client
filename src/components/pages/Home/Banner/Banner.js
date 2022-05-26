@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import bannerImg from "../../../../assets/landing1.png";
+import { Link } from 'react-scroll';
 const Banner = () => {
+  const [nav, setNav] = useState(false);
+  const handleClick = () => setNav(!nav);
+
   return (
     <div class="hero min-h-screen bg-base-100">
       <div class="hero-content flex-col lg:flex-row-reverse">
@@ -14,9 +18,10 @@ const Banner = () => {
           <p class="py-6">
           EntropyLab Bangladesh is an A to Z Scientific Lab Equipment seller and supplier in Bangladesh. It’s also a scientific store, stockist, wholesaler, procurement provider, retailer of health, safety, surgical, scientific laboratory and testing Products for schools, colleges, and industries. EntropyLab provides the complete product solution of laboratory equipment, lab consumable materials, and safety products. Here we sell Weight Scales, 
           </p>
-          <button class="btn btn-primary hover:btn-secondary">
+          
+          <Link onClick={handleClick} class="btn btn-primary hover:btn-secondary"  to='products' smooth={true} duration={500}>
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </div>

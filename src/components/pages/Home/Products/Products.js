@@ -16,7 +16,7 @@ const Products = () => {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <section class="text-gray-600 body-font">
+    <section id="products" class="text-gray-600 body-font">
       <div class="container px-5 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
           <h2 class="text-xs text-primary tracking-widest font-medium title-font mb-1">
