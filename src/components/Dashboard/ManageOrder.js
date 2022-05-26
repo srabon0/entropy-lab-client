@@ -9,7 +9,7 @@ const ManageOrder = () => {
     data: orders,
     refetch,
   } = useQuery("allorders", () =>
-    fetch("http://localhost:5000/orders").then((res) => res.json())
+    fetch("https://powerful-mesa-47934.herokuapp.com/orders").then((res) => res.json())
   );
 
   if (isLoading) return <Loading></Loading>;

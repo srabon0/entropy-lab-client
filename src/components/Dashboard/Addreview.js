@@ -35,7 +35,7 @@ const Addreview = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       };
        
-       const url  = "http://localhost:5000/addreview"
+       const url  = "https://powerful-mesa-47934.herokuapp.com/addreview"
        const {data} = await axios.post(url,reviwRating,{headers:headers});
        if(data.insertedId){
         console.log(data)

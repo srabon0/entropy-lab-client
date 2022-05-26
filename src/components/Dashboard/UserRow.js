@@ -12,7 +12,7 @@ const UserRow = ({user,refetch}) => {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           };
-        const url = `http://localhost:5000/deluser/${id}`;
+        const url = `https://powerful-mesa-47934.herokuapp.com/deluser/${id}`;
         const proceed = await Confirm('Are you Sure you want to remove the user ?', 
         'Warning');
         if (proceed) {
@@ -33,7 +33,7 @@ const UserRow = ({user,refetch}) => {
       const proceed = await Confirm('Confirm Again !!!', 
         'Confirmation');
         if (proceed) {
-          const adminUrl = `http://localhost:5000/secretAdmin/${email}`;
+          const adminUrl = `https://powerful-mesa-47934.herokuapp.com/secretAdmin/${email}`;
           fetch(adminUrl,{
             method:"PUT",
             headers:{

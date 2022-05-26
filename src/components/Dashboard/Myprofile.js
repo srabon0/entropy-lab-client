@@ -17,7 +17,7 @@ const Myprofile = () => {
   } = useForm();
 
   const [user, loading, error] = useAuthState(auth);
-  const url = ` http://localhost:5000/user/${user.email}`;
+  const url = ` https://powerful-mesa-47934.herokuapp.com/user/${user.email}`;
   const {
     isLoading,
     error2,
@@ -45,7 +45,7 @@ const Myprofile = () => {
             img: myimg,
           };
           console.log(userinfo);
-          const urlToUpdate = `http://localhost:5000/update/${currentUser.email}`;
+          const urlToUpdate = `https://powerful-mesa-47934.herokuapp.com/update/${currentUser.email}`;
           fetch(urlToUpdate, {
             method: "PUT",
             headers: {
