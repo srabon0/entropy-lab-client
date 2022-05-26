@@ -53,3 +53,25 @@ This is a portfolio project for Any kind of labratory item manufacturer and supp
 - Delete Product
 - Confirm pay and send product to be shipped.
 
+
+## Landing Page View
+![App Screenshot](https://i.ibb.co/pK6wcRf/landing-page.png)
+
+## Product page
+![App Screenshot](https://i.ibb.co/CPdX3nL/confirm-order-dashboard.png)
+
+## Admin Manage Order Page
+
+![App Screenshot](https://i.ibb.co/D4sNCvR/manage-orders.png)
+
+
+## user  order manage
+
+![App Screenshot](https://i.ibb.co/5s6fhDz/user-ordes.png)
+
+## Order confirmed email Screenshot
+
+
+![App Screenshot](https://i.ibb.co/MS2zvyQ/Capture.png)
+
+
