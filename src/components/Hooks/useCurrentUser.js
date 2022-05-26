@@ -13,7 +13,7 @@ const useCurrentUser = () => {
   useEffect(()=>{
       if(user){
     const email = user.email
-      fetch(`https://powerful-mesa-47934.herokuapp.com/ user/${email}`)
+      fetch(`https://powerful-mesa-47934.herokuapp.com/user/${email}`)
       .then(res=>res.json())
       .then(data=>{
         setInternalUser(data)

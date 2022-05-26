@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const ProductRow = ({product,index,refetch}) => {
 
     const cancelOrder = async (id) => {
-        const url = `https://powerful-mesa-47934.herokuapp.com/ removeitem/${id}`;
+        const url = `https://powerful-mesa-47934.herokuapp.com/removeitem/${id}`;
         const headers = {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         };
@@ -29,24 +29,24 @@ const ProductRow = ({product,index,refetch}) => {
         <>
       <tr>
           <th>{index+1}</th>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           
           
-              <p class="text-gray-900 whitespace-no-wrap">{productName}</p>
-              <p class="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK/per unit </p>
+              <p className="text-gray-900 whitespace-no-wrap">{productName}</p>
+              <p className="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK/per unit </p>
               
             
           
         </td>
         
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p class="text-gray-900 whitespace-no-wrap"> {availableQ} Unit </p> 
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p className="text-gray-900 whitespace-no-wrap"> {availableQ} Unit </p> 
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p class="text-gray-900 whitespace-no-wrap"> {minimumQ} Unit </p> 
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p className="text-gray-900 whitespace-no-wrap"> {minimumQ} Unit </p> 
         </td>
         
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
               onClick={() => cancelOrder(_id)}
               className="btn btn-sm btn-error mx-1"
@@ -54,7 +54,7 @@ const ProductRow = ({product,index,refetch}) => {
               Delete
             </button>
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
            
         </td>
 

@@ -17,7 +17,7 @@ const Myprofile = () => {
   } = useForm();
 
   const [user, loading, error] = useAuthState(auth);
-  const url = ` https://powerful-mesa-47934.herokuapp.com/ user/${user.email}`;
+  const url = ` https://powerful-mesa-47934.herokuapp.com/user/${user.email}`;
   const {
     isLoading,
     error2,
@@ -45,7 +45,7 @@ const Myprofile = () => {
             img: myimg,
           };
           console.log(userinfo);
-          const urlToUpdate = `https://powerful-mesa-47934.herokuapp.com/ update/${currentUser.email}`;
+          const urlToUpdate = `https://powerful-mesa-47934.herokuapp.com/update/${currentUser.email}`;
           fetch(urlToUpdate, {
             method: "PUT",
             headers: {
@@ -80,9 +80,9 @@ const Myprofile = () => {
   }
   return (
     <div className="flex flex-col md:flex-row gap-8 ">
-      <div class="max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+      <div className="max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <img
-          class="object-cover object-center w-full h-48"
+          className="object-cover object-center w-full h-48"
           src={
             currentUser?.img || user?.photoURL ||
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
@@ -91,46 +91,46 @@ const Myprofile = () => {
         />
         {(!currentUser?.img && !user?.photoURL ) && <p className="text-white"> update ur image</p>}
 
-        <div class="px-6 py-4">
-          <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
+        <div className="px-6 py-4">
+          <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
             {currentUser?.name || user.displayName || "please update name"}
           </h1>
 
-          <p class="py-2 text-gray-700 dark:text-gray-400">Platinum User.</p>
+          <p className="py-2 text-gray-700 dark:text-gray-400">Platinum User.</p>
 
-          <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
             <svg
-              class="w-6 h-6 fill-current"
+              className="w-6 h-6 fill-current"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M14 11H10V13H14V11Z" />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M7 5V4C7 2.89545 7.89539 2 9 2H15C16.1046 2 17 2.89545 17 4V5H20C21.6569 5 23 6.34314 23 8V18C23 19.6569 21.6569 21 20 21H4C2.34314 21 1 19.6569 1 18V8C1 6.34314 2.34314 5 4 5H7ZM9 4H15V5H9V4ZM4 7C3.44775 7 3 7.44769 3 8V14H21V8C21 7.44769 20.5522 7 20 7H4ZM3 18V16H21V18C21 18.5523 20.5522 19 20 19H4C3.44775 19 3 18.5523 3 18Z"
               />
             </svg>
 
-            <h1 class="px-2 text-sm"></h1>
+            <h1 className="px-2 text-sm"></h1>
           </div>
 
-          <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 fill-current"
+              className="h-5 w-5 fill-current"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
 
-            <h1 class="px-5 text-sm">{currentUser?.contact}</h1>
+            <h1 className="px-5 text-sm">{currentUser?.contact}</h1>
             {user?.phoneNumber ? (
               <span> {user.phoneNumber} </span>
             ) : (
@@ -138,35 +138,35 @@ const Myprofile = () => {
             )}
           </div>
 
-          <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+          <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
             <svg
-              class="w-6 h-6 fill-current"
+              className="w-6 h-6 fill-current"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"
               />
             </svg>
 
-            <h1 class="px-2 text-sm">{user.email}</h1>
+            <h1 className="px-2 text-sm">{user.email}</h1>
           </div>
         </div>
       </div>
 
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-96 bg-base-100 shadow-xl">
         <h1 className="m-4 text-2xl text-primary">Update your information</h1>
-        <div class="card-body">
+        <div className="card-body">
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="mx-6">
               <div>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                  className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                   {...register("name", {
                     required: {
                       value: true,
@@ -188,7 +188,7 @@ const Myprofile = () => {
                 <input
                   type="text"
                   placeholder="contact"
-                  class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                  className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                   {...register("contact", {
                     required: {
                       value: true,
@@ -209,7 +209,7 @@ const Myprofile = () => {
                 <input
                   type="file"
                   placeholder="your image here"
-                  class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                  className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                   {...register("image", {
                     required: {
                       value: true,
@@ -226,7 +226,7 @@ const Myprofile = () => {
                   )}
                 </label>
               </div>
-              <div class="card-actions justify-end">
+              <div className="card-actions justify-end">
                 <input
                   type="submit"
                   className="btn btn-secondary mt-6  text-base-100 w-full max-w-md"

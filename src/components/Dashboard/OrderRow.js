@@ -12,7 +12,7 @@ const UserRow = ({ index, order,refetch}) => {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           };
-        const url = `https://powerful-mesa-47934.herokuapp.com/ order/delivered/${id}`;
+        const url = `https://powerful-mesa-47934.herokuapp.com/order/delivered/${id}`;
         const proceed = await Confirm('Are you ready for shipment ?', 
         'Warning');
         if (proceed) {
@@ -35,37 +35,37 @@ const UserRow = ({ index, order,refetch}) => {
     <>
       <tr>
           <th>{index+1}</th>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           
           
-              <p class="text-gray-900 whitespace-no-wrap">{productName}</p>
-              <p class="text-gray-900 whitespace-no-wrap text-sm">{productId}</p>
-              <p class="text-gray-900 whitespace-no-wrap text-sm">{customer}</p>
+              <p className="text-gray-900 whitespace-no-wrap">{productName}</p>
+              <p className="text-gray-900 whitespace-no-wrap text-sm">{productId}</p>
+              <p className="text-gray-900 whitespace-no-wrap text-sm">{customer}</p>
             
           
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p class="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK </p> 
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p className="text-gray-900 whitespace-no-wrap">{pricePerUnit} TK </p> 
         </td>
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p class="text-gray-900 whitespace-no-wrap">{orderQ} Unit </p> 
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p className="text-gray-900 whitespace-no-wrap">{orderQ} Unit </p> 
         </td>
         
-        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           {
-            transactionId ? <span class="relative inline-block px-3 py-1 font-semibold text-black leading-tight">
+            transactionId ? <span className="relative inline-block px-3 py-1 font-semibold text-black leading-tight">
             <span
               aria-hidden
-              class="absolute inset-0 bg-info rounded-sm"
+              className="absolute inset-0 bg-info rounded-sm"
             ></span>
-            <span class="relative">Paid</span>
+            <span className="relative">Paid</span>
           </span>
-          :<span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
+          :<span className="relative inline-block px-3 py-1 font-semibold text-white leading-tight">
           <span
             aria-hidden
-            class="absolute inset-0 bg-error opacity-50 rounded-sm"
+            className="absolute inset-0 bg-error opacity-50 rounded-sm"
           ></span>
-          <span class="relative">Unpaid</span>
+          <span className="relative">Unpaid</span>
         </span> 
            
             
@@ -73,26 +73,26 @@ const UserRow = ({ index, order,refetch}) => {
           } 
         </td>
         {
-          shipped ? <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          shipped ? <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button disabled = { transactionId ? false : true } onClick={() => handleShipping(_id)}>
-          <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
+          <span className="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
             <span
               aria-hidden
-              class={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
+              className={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
             ></span>
-            <span class="relative">Delivered</span>
+            <span className="relative">Delivered</span>
           </span>
           </button>
         </td> :
 
-          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button disabled = { transactionId ? false : true } onClick={() => handleShipping(_id)}>
-          <span class="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
+          <span className="relative inline-block px-3 py-1 font-semibold text-white leading-tight ">
             <span
               aria-hidden
-              class={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
+              className={`absolute inset-0 rounded-sm ${transactionId ? "bg-success text-white" : "bg-error"   }`}
             ></span>
-            <span class="relative">Ship</span>
+            <span className="relative">Ship</span>
           </span>
           </button>
         </td>

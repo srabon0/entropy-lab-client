@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rating = ({setRating}) => {
     return (
-        <ul class="flex justify-center">
+        <ul className="flex justify-center">
         <li className="hover:cursor-pointer">
           <svg
           onClick={()=>setRating(1)}
@@ -10,7 +10,7 @@ const Rating = ({setRating}) => {
             focusable="false"
             data-prefix="far"
             data-icon="star"
-            class="w-6 text-yellow-500 mr-1"
+            className="w-6 text-yellow-500 mr-1"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -28,7 +28,7 @@ const Rating = ({setRating}) => {
             focusable="false"
             data-prefix="far"
             data-icon="star"
-            class="w-6 text-yellow-500 mr-1"
+            className="w-6 text-yellow-500 mr-1"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -46,7 +46,7 @@ const Rating = ({setRating}) => {
             focusable="false"
             data-prefix="far"
             data-icon="star"
-            class="w-6 text-yellow-500 mr-1"
+            className="w-6 text-yellow-500 mr-1"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -64,7 +64,7 @@ const Rating = ({setRating}) => {
             focusable="false"
             data-prefix="far"
             data-icon="star"
-            class="w-6 text-yellow-500 mr-1"
+            className="w-6 text-yellow-500 mr-1"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -82,7 +82,7 @@ const Rating = ({setRating}) => {
             focusable="false"
             data-prefix="far"
             data-icon="star"
-            class="w-6 text-yellow-500"
+            className="w-6 text-yellow-500"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"

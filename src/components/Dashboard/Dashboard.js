@@ -19,28 +19,28 @@ const Dashboard = () => {
     );
   }
   return (
-    <div class="drawer drawer-mobile">
-      <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col">
+    <div className="drawer drawer-mobile">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
         <label
-          for="my-drawer-2"
-          class=" mx-auto btn w-52 btn-xs btn-outline btn-accent text-white drawer-button lg:hidden"
+          htmlFor="my-drawer-2"
+          className=" mx-auto btn w-52 btn-xs btn-outline btn-accent text-white drawer-button lg:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
           Click to Expand
@@ -52,9 +52,9 @@ const Dashboard = () => {
 
         <Outlet />
       </div>
-      <div class="drawer-side">
-        <label htmlFor="my-drawer-2" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           {user  && (
             <>
               <li>

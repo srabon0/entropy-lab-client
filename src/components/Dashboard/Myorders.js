@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useQuery } from "react-query";
 const Myorders = () => {
   const [user, loading, error] = useAuthState(auth);
-  const url = ` https://powerful-mesa-47934.herokuapp.com/ order/${user.email}`;
+  const url = ` https://powerful-mesa-47934.herokuapp.com/order/${user.email}`;
   const {
     isLoading,
     error2,
@@ -28,22 +28,22 @@ const Myorders = () => {
     );
   }
   return (
-    <section class="container mx-auto p-6">
-      <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-        <div class="w-full overflow-x-auto">
-          <table class="w-full">
+    <section className="container mx-auto p-6">
+      <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+        <div className="w-full overflow-x-auto">
+          <table className="w-full">
             <thead>
-              <tr class="text-sm tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                <th class="px-3 py-2">#SL</th>
-                <th class="px-3 py-2">Product Name</th>
-                <th class="px-3 py-2">Order Quantity</th>
-                <th class="px-3 py-2">Price Per Unit</th>
-                <th class="px-3 py-2">Pay Total</th>
-                <th class="px-3 py-2">Action</th>
-                <th class="px-3 py-2">X</th>
+              <tr className="text-sm tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                <th className="px-3 py-2">#SL</th>
+                <th className="px-3 py-2">Product Name</th>
+                <th className="px-3 py-2">Order Quantity</th>
+                <th className="px-3 py-2">Price Per Unit</th>
+                <th className="px-3 py-2">Pay Total</th>
+                <th className="px-3 py-2">Action</th>
+                <th className="px-3 py-2">X</th>
               </tr>
             </thead>
-            <tbody class="bg-white">
+            <tbody className="bg-white">
               {orders.map((order, index) => (
                 <OrderRow
                   refetch={refetch}
@@ -67,7 +67,7 @@ const OrderRow = ({ refetch, order, index }) => {
     order;
 
   const payForOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/ order/pay/${id}`;
+    const url = `https://powerful-mesa-47934.herokuapp.com/order/pay/${id}`;
     const headers = {
       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
@@ -94,7 +94,7 @@ const OrderRow = ({ refetch, order, index }) => {
   };
 
   const cancelOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/ item/${id}`;
+    const url = `https://powerful-mesa-47934.herokuapp.com/item/${id}`;
     const headers = {
       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
@@ -114,17 +114,17 @@ const OrderRow = ({ refetch, order, index }) => {
   };
   return (
     <>
-      <tr class="text-gray-700">
-        <td class="px-3 py-2 border">{index + 1}</td>
-        <td class="px-3 py-2 text-ms  border">{productName}</td>
-        <td class="px-3 py-2 text-xs border">
-          <span class="px-3 py-1 leading-tight text-green-700 bg-green-100 rounded-sm">
+      <tr className="text-gray-700">
+        <td className="px-3 py-2 border">{index + 1}</td>
+        <td className="px-3 py-2 text-ms  border">{productName}</td>
+        <td className="px-3 py-2 text-xs border">
+          <span className="px-3 py-1 leading-tight text-green-700 bg-green-100 rounded-sm">
             {orderQ}
           </span>
         </td>
-        <td class="px-3 py-2 text-sm border">{pricePerUnit}</td>
-        <td class="px-3 py-2 text-sm border">{orderQ * pricePerUnit}</td>
-        <td class="px-3 py-2 text-sm border">
+        <td className="px-3 py-2 text-sm border">{pricePerUnit}</td>
+        <td className="px-3 py-2 text-sm border">{orderQ * pricePerUnit}</td>
+        <td className="px-3 py-2 text-sm border">
           {transactionId ? (
             <button className="btn btn-sm btn-success text-white mx-1">Paid</button>
           ) : (
