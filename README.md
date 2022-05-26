@@ -4,7 +4,7 @@
 This is a portfolio project for Any kind of labratory item manufacturer and supplier , In this web applicaton a client can purchase chemical product demand on his need. 
 
 ## Live on
- - [EntropyLab Live](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [EntropyLab Live](https://entropylab-7fc14.web.app/)
  - [EntropyLab Client Side Git repo](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-srabon0.git)
  - [Entropy Lab Server Side Git Repo](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-srabon0.git)
  - [Entropy Lab Server ](https://powerful-mesa-47934.herokuapp.com/)

@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import UserRow from "./UserRow";
+import Loading from '../Shared/Loading';
 
 const Alluser = () => {
   const {
@@ -16,7 +17,7 @@ const Alluser = () => {
     }).then((res) => res.json())
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loading></Loading>;
 
   if (error) return "An error has occurred: " + error.message;
 

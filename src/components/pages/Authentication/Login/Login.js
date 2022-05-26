@@ -9,6 +9,7 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import useToken from "../../../Hooks/useToken";
+import Loading from "../../../Shared/Loading";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -35,7 +36,7 @@ const Login = () => {
   }, [token, from, navigate]);
 
   if (loading || gLoading) {
-    return <p>Loading</p>;
+    return <Loading></Loading>
   }
 
   if (error || gError) {

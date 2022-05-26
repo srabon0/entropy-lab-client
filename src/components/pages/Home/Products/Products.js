@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import SingleProduct from "./SingleProduct";
+import Loading from '../../../Shared/Loading';
 
 const Products = () => {
   const {
@@ -11,7 +12,7 @@ const Products = () => {
     fetch("http://localhost:5000/labitems").then((res) => res.json())
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loading></Loading>
 
   if (error) return "An error has occurred: " + error.message;
 
