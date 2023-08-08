@@ -1,30 +1,31 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import axiosInstance from '../../utils/axiosInstance'; // Import your axios instance here
 
 const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const [adminLoading, setAdminLoading] = useState(true);
+
   useEffect(() => {
     const email = user?.email;
     if (email) {
-        const url = `https://powerful-mesa-47934.herokuapp.com/isThePersonAdmin/${email}`
-        const headers = {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          };
-        const isAdmin = async() =>{
-            const {data} = await axios.get(url,{headers:headers});
-            setAdmin(data.admin);
-            setAdminLoading(false)
-            console.log(data.admin);
+      const url = `/isThePersonAdmin/${email}`;
+      const isAdmin = async () => {
+        try {
+          const { data } = await axiosInstance.get(url);
+          setAdmin(data.admin);
+          setAdminLoading(false);
+          console.log(data.admin);
+        } catch (error) {
+          console.error('Error occurred while checking admin status:', error);
+          setAdminLoading(false);
         }
-        isAdmin();
+      };
 
-     
+      isAdmin();
     }
   }, [user]);
+
   return [admin, adminLoading];
 };
 
 export default useAdmin;
-

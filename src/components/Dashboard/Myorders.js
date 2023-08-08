@@ -1,31 +1,37 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { Confirm } from "react-st-modal";
-import { Prompt, Alert } from "react-st-modal";
+import { Prompt } from "react-st-modal";
 import { toast } from "react-toastify";
 import { useQuery } from "react-query";
+import axiosInstance from '../../utils/axiosInstance'
 const Myorders = () => {
   const [user, loading, error] = useAuthState(auth);
-  const url = ` https://powerful-mesa-47934.herokuapp.com/order/${user.email}`;
   const {
-    isLoading,
-    error2,
-    data: orders,
-    refetch,
-  } = useQuery("orders", () => fetch(url).then((res) => res.json()));
+      isLoading,
+      error: error2,
+      data: orders,
+      refetch
+  } = useQuery("orders", async () => {
+      try {
+          const response = await axiosInstance.get(`/order/${user.email}`);
+          return response.data;
+      } catch (error) {
+          throw new Error(`An error occurred: ${error.message}`);
+      }
+  });
 
   if (loading || isLoading) {
-    return <Loading></Loading>;
+      return <Loading />;
   }
   if (error || error2) {
-    return (
-      <div>
-        <p>Error: {error || error2}</p>
-      </div>
-    );
+      return (
+          <div>
+              <p>Error: {error || error2}</p>
+          </div>
+      );
   }
   return (
     <section className="container mx-auto p-6">
@@ -67,10 +73,6 @@ const OrderRow = ({ refetch, order, index }) => {
     order;
 
   const payForOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/order/pay/${id}`;
-    const headers = {
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    };
     var txnId = await Prompt(
       "Please Provide a TXNid,this must be a 10 digit number",
       {
@@ -82,7 +84,7 @@ const OrderRow = ({ refetch, order, index }) => {
     if (txnId.length > 10) {
       const transactionId = { transactionId: txnId };
       console.log(transactionId);
-      const { data } = await axios.put(url, transactionId, { headers: headers });
+      const { data } = await axiosInstance.put(`/pay/${id}`, transactionId);
       if (data.modifiedCount) {
         console.log(data);
         toast.success("Payment SuccessFul");
@@ -94,17 +96,13 @@ const OrderRow = ({ refetch, order, index }) => {
   };
 
   const cancelOrder = async (id) => {
-    const url = `https://powerful-mesa-47934.herokuapp.com/item/${id}`;
-    const headers = {
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    };
     const result = await Confirm(
       "Are you Sure You want to cancel the order?",
       "Warning"
     );
 
     if (result) {
-      const { data } =await axios.delete(url, { headers: headers });
+      const { data } = await axiosInstance.delete(`/item/${id}`);
       console.log(data);
       toast.success("Order cancelled");
       refetch();

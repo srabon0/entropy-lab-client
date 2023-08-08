@@ -2,15 +2,21 @@ import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import OrderRow from "./OrderRow";
+import axiosInstance from '../../utils/axiosInstance'
 const ManageOrder = () => {
   const {
     isLoading,
     error,
     data: orders,
     refetch,
-  } = useQuery("allorders", () =>
-    fetch("https://powerful-mesa-47934.herokuapp.com/orders").then((res) => res.json())
-  );
+  } = useQuery("allorders", async () => {
+    try {
+      const response = await axiosInstance.get("/orders");
+      return response.data;
+    } catch (error) {
+      throw new Error(`An error occurred: ${error.message}`);
+    }
+  });
 
   if (isLoading) return <Loading></Loading>;
 

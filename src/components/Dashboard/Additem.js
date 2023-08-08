@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
-
+import axiosInstance from '../../utils/axiosInstance';
 const Additem = () => {
   const imgApiKey = "e93becba76932bc2bf5cc1518db458ba";
   const navigate = useNavigate()
@@ -34,21 +34,14 @@ const Additem = () => {
             pricePerUnit: ppu,
             desc:desc
           }
-          const addItemUrl = "https://powerful-mesa-47934.herokuapp.com/additem";
-          fetch(addItemUrl, {
-            method: "POST",
-            headers: {
-            "content-type":"application/json",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(item),
-          })
+            axiosInstance.post('/endpoint', item)
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
                 toast.success("Item added Successfully");
                 console.log(data)
                 event.target.reset();
+                navigate('/labitems');
                 
               }else{
                   toast.error("Operation Failed")

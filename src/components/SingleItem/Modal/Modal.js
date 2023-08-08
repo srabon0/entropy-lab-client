@@ -1,46 +1,40 @@
-import axios from "axios";
 import React from "react";
-
+import axiosInstance from '../../../utils/axiosInstance'
 import { toast } from "react-toastify";
 import useCurrentUser from "../../Hooks/useCurrentUser";
 
 
-const Modal = ({item, user,setOrder}) => {
-   const {_id,productName,availableQ,minimumQ, pricePerUnit} = item
-   const {displayName, email} = user
-   const [internalUser] = useCurrentUser();
-   console.log(internalUser);
-   
+const Modal = ({ item, user, setOrder }) => {
+  const { _id, productName, availableQ, minimumQ, pricePerUnit } = item;
+  const { displayName, email } = user;
+  const [internalUser] = useCurrentUser();
+  console.log(internalUser);
 
-  
+  const handleConfirmOrder = async (event) => {
+    event.preventDefault();
+    const orderProduct = {
+      productId: _id,
+      productName: productName,
+      pricePerUnit: pricePerUnit,
+      customer: email,
+      customerName: displayName,
+      orderQ: event.target.orderQ.value,
+    };
+    
 
-   const handleConfirmOrder = async (event) =>{
-       event.preventDefault()
-       const orderProduct = {
+    try {
+      const response = await axiosInstance.post('/order', orderProduct);
 
-        productId : _id,
-        productName:productName,
-        pricePerUnit:pricePerUnit,
-        customer:email,
-        customerName: displayName ,
-        orderQ: event.target.orderQ.value
-       }
-       const headers = {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      };
-       
-       const url  = "https://powerful-mesa-47934.herokuapp.com/order"
-       const {data} = await axios.post(url,orderProduct,{headers:headers});
-       if(data.insertedId){
-        console.log(data)
-        toast.success("Order Confirmed")
-        setOrder(null)
-       }
-
-
-
-   }
+      if (response.data.insertedId) {
+        console.log(response.data);
+        toast.success('Order Confirmed');
+        setOrder(null);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Order Confirmation Failed');
+    }
+  };
 
 
   return (

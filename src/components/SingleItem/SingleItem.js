@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,6 +5,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import Modal from './Modal/Modal'
 import OrderItem from "./Modal/OrderItem";
+import axiosInstance from '../../utils/axiosInstance'
 
 // const item = {
 //     productName:productName ,
@@ -18,27 +18,26 @@ import OrderItem from "./Modal/OrderItem";
 
 const SingleItem = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
-  const [order,setOrder] = useState(null)
+  const navigate = useNavigate();
+  const [order, setOrder] = useState(null);
   const [user, loading, error] = useAuthState(auth);
-  
+
   const [item, setItem] = useState([]);
   useEffect(() => {
     const getItem = async () => {
-      const headers = {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      };
-      const url = `https://powerful-mesa-47934.herokuapp.com/item/${id}`;
-      const { data } = await axios.get(url, { headers: headers });
-      console.log(data);
-      setItem(data);
+      try {
+        const response = await axiosInstance.get(`/item/${id}`);
+        console.log(response.data);
+        setItem(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getItem();
   }, [id]);
 
   if (loading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
   if (error) {
     return (
@@ -47,22 +46,16 @@ const SingleItem = () => {
       </div>
     );
   }
-  if(!user){
-    navigate('/login')
-
+  if (!user) {
+    navigate('/login');
   }
 
   return (
     <>
-    
-      <OrderItem key={item._id} item={item} setOrder={setOrder}></OrderItem>
+      <OrderItem key={item._id} item={item} setOrder={setOrder} />
 
-      {
-order && <Modal  user={user} item={item} setOrder={setOrder}></Modal>
-      }
-
-      </>
-    
+      {order && <Modal user={user} item={item} setOrder={setOrder} />}
+    </>
   );
 };
 

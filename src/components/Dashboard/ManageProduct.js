@@ -2,15 +2,21 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import ProductRow from './ProductRow';
 import Loading from '../Shared/Loading';
+import axiosInstance from "../../utils/axiosInstance"
 const ManageProduct = () => {
-    const {
-        isLoading,
-        error,
-        data: products,
-        refetch
-      } = useQuery("products", () =>
-        fetch("https://powerful-mesa-47934.herokuapp.com/labitems").then((res) => res.json())
-      );
+  const {
+      isLoading,
+      error,
+      data: products,
+      refetch
+  } = useQuery("products", async () => {
+      try {
+          const response = await axiosInstance.get("/labitems");
+          return response.data;
+      } catch (error) {
+          throw new Error(`An error occurred: ${error.message}`);
+      }
+  });
     
       if (isLoading) return <Loading></Loading>
     

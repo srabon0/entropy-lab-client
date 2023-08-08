@@ -2,20 +2,17 @@ import React from "react";
 import { useQuery } from "react-query";
 import UserRow from "./UserRow";
 import Loading from '../Shared/Loading';
+import axiosInstance from "../../utils/axiosInstance";
 
 const Alluser = () => {
-  const {
-    isLoading,
-    error,
-    data: users,
-    refetch
-  } = useQuery("allUsers", () =>
-    fetch("https://powerful-mesa-47934.herokuapp.com/users", {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const { isLoading, error, data: users, refetch } = useQuery("allUsers", async () => {
+    try {
+      const response = await axiosInstance.get("/users");
+      return response.data;
+    } catch (error) {
+      throw new Error(`An error occurred: ${error.message}`);
+    }
+  });
 
   if (isLoading) return <Loading></Loading>;
 
@@ -72,7 +69,7 @@ const Alluser = () => {
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Role
                   </th>
-                  
+
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Contact
                   </th>
@@ -85,9 +82,9 @@ const Alluser = () => {
                 </tr>
               </thead>
               <tbody>
-{
-    users.map(user=><UserRow refetch={refetch} key={user._id} user={user} refetch={refetch} ></UserRow>)
-}
+                {
+                  users.map(user => <UserRow refetch={refetch} key={user._id} user={user} ></UserRow>)
+                }
 
 
               </tbody>

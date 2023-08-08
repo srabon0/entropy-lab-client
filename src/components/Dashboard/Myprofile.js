@@ -5,68 +5,72 @@ import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-
+import axiosInstance from '../../utils/axiosInstance'
 const Myprofile = () => {
   const imgApiKey = "e93becba76932bc2bf5cc1518db458ba";
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-  const [user, loading, error] = useAuthState(auth);
-  const url = ` https://powerful-mesa-47934.herokuapp.com/user/${user.email}`;
-  const {
-    isLoading,
-    error2,
-    data: currentUser,
-    refetch,
-  } = useQuery(["user", user], () => fetch(url).then((res) => res.json()));
-
-  const onSubmit = async (data) => {
-    const image = data.image[0];
-    var formData = new FormData();
-    formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${imgApiKey}`;
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        if (result.success) {
-          const myimg = result.data.url;
-          const userinfo = {
-            name: data.name,
-            contact: data.contact,
-            img: myimg,
-          };
-          console.log(userinfo);
-          const urlToUpdate = `https://powerful-mesa-47934.herokuapp.com/update/${currentUser.email}`;
-          fetch(urlToUpdate, {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(userinfo),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.modifiedCount > 0) {
-                toast.success("user updated Successfully");
-                console.log(data);
-                refetch();
-              } else {
-                toast.error("cant update the user");
-              }
-            });
+    const [user, loading, error] = useAuthState(auth);
+    const url = `/user/${user.email}`;
+    const {
+        isLoading,
+        error: error2,
+        data: currentUser,
+        refetch
+    } = useQuery(["user", user], async () => {
+        try {
+            const response = await axiosInstance.get(url);
+            return response.data;
+        } catch (error) {
+            throw new Error(`An error occurred: ${error.message}`);
         }
-      });
+    });
+
+    const onSubmit = async (data) => {
+      const image = data.image[0];
+      const formData = new FormData();
+      formData.append("image", image);
+      
+      try {
+          const imgResponse = await axiosInstance.post(
+              `https://api.imgbb.com/1/upload?key=${imgApiKey}`,
+              formData
+          );
+  
+          if (imgResponse.data.success) {
+              const myimg = imgResponse.data.data.url;
+              const userinfo = {
+                  name: data.name,
+                  contact: data.contact,
+                  img: myimg,
+              };
+  
+              try {
+                  const urlToUpdate = `/update/${currentUser.email}`;
+                  const updateResponse = await axiosInstance.put(
+                      urlToUpdate,
+                      userinfo
+                  );
+  
+                  if (updateResponse.data.modifiedCount > 0) {
+                      toast.success("User updated Successfully");
+                      refetch();
+                  } else {
+                      toast.error("Can't update the user");
+                  }
+              } catch (updateError) {
+                  toast.error("An error occurred while updating user");
+              }
+          }
+      } catch (imgError) {
+          toast.error("An error occurred while uploading image");
+      }
   };
+  
 
   if (loading || isLoading) {
     return <Loading></Loading>;
@@ -112,8 +116,6 @@ const Myprofile = () => {
                 d="M7 5V4C7 2.89545 7.89539 2 9 2H15C16.1046 2 17 2.89545 17 4V5H20C21.6569 5 23 6.34314 23 8V18C23 19.6569 21.6569 21 20 21H4C2.34314 21 1 19.6569 1 18V8C1 6.34314 2.34314 5 4 5H7ZM9 4H15V5H9V4ZM4 7C3.44775 7 3 7.44769 3 8V14H21V8C21 7.44769 20.5522 7 20 7H4ZM3 18V16H21V18C21 18.5523 20.5522 19 20 19H4C3.44775 19 3 18.5523 3 18Z"
               />
             </svg>
-
-            <h1 className="px-2 text-sm"></h1>
           </div>
 
           <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">

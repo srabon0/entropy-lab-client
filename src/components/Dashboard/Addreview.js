@@ -1,4 +1,4 @@
-import axios from "axios";
+import  axiosInstance  from "../../utils/axiosInstance";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -21,34 +21,30 @@ const Addreview = () => {
     );
   }
 
-  const handleSubmitReview = async(event) =>{
-      event.preventDefault()
-      const reviwRating = {
-            rating : rating,
-         review : event.target.review.value,
-         userEmail : user?.email,
-         userName:user?.displayName
-      }
-      console.log(reviwRating)
-      const headers = {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      };
-       
-       const url  = "https://powerful-mesa-47934.herokuapp.com/addreview"
-       const {data} = await axios.post(url,reviwRating,{headers:headers});
-       if(data.insertedId){
-        console.log(data)
-        toast.success("Review Added")
-        setRating(null)
-        event.target.reset()
-       
-          
-      }else{
-          toast("operation failed")
-      }
-      
+  const handleSubmitReview = async (event) => {
+    event.preventDefault();
+    const reviwRating = {
+      rating: rating,
+      review: event.target.review.value,
+      userEmail: user?.email,
+      userName: user?.displayName,
+    };
+    console.log(reviwRating);
 
+    try {
+      const response = await axiosInstance.post('/addreview', reviwRating);
+      if (response.data.insertedId) {
+        console.log(response.data);
+        toast.success('Review Added');
+        setRating(null);
+        event.target.reset();
+      } else {
+        toast.error('Operation failed');
+      }
+    } catch (error) {
+      console.error('Error adding review:', error);
+      toast.error('An error occurred while adding the review');
+    }
   }
   return (
 
